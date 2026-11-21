@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>הבורגרייה · המבורגר על הגריל</title>
+<meta name="description" content="אתר לדוגמה למסעדה: תפריט, הזמנה בוואטסאפ, שעות פתיחה ומשחק ממותג עם פרס.">
+<meta name="theme-color" content="#2a1a12">
+<meta property="og:title" content="הבורגרייה · אתר + משחק לדוגמה">
+<meta property="og:description" content="ככה יכול להיראות האתר של העסק שלכם. כולל משחק ממותג עם פרס ללקוחות.">
+<meta property="og:image" content="https://asseoy.github.io/demo/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#d62828;--red2:#b21e1e;--yel:#f7b32b;--dark:#2a1a12;--dark2:#3a2619;--cream:#fff6e8;--paper:#fffbf4;--ink:#2a1a12;--mute:#7a6658;--line:#efdfc8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Rubik,system-ui,sans-serif;font-size:16px;line-height:1.5}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:14px 22px;font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:scale(.97)}
+.btn.r{background:var(--red);color:#fff;box-shadow:0 6px 0 var(--red2)}
+.btn.y{background:var(--yel);color:var(--dark);box-shadow:0 6px 0 #c98a12}
+.btn.o{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff6}
+.btn svg{width:20px;height:20px}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:rgba(42,26,18,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff}
+.bar .wrap{display:flex;align-items:center;gap:12px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:22px;text-decoration:none;letter-spacing:-.5px}
+.logo i{width:34px;height:34px;border-radius:10px;background:var(--yel);display:grid;place-items:center}
+.logo i svg{width:24px}
+.nav{display:flex;gap:4px;margin-inline-start:auto}
+.nav a{text-decoration:none;color:#f3dcc4;font-weight:500;padding:8px 12px;border-radius:10px}
+.nav a:hover{background:#ffffff14;color:#fff}
+.bar .btn{padding:9px 16px;font-size:15px;border-radius:11px;box-shadow:none}
+
+/* hero */
+.hero{position:relative;background:var(--dark);color:#fff;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 75% 40%,#5a2a14 0,transparent 55%),radial-gradient(circle at 10% 100%,#4a1a10 0,transparent 50%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding-top:56px;padding-bottom:64px}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:#ffffff12;border:1px solid #ffffff22;padding:6px 12px;border-radius:99px;font-size:14px;color:#ffd98a;font-weight:500}
+.kicker b{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px #4ade8033}
+h1{font-size:clamp(40px,6.4vw,74px);line-height:1;margin:18px 0 0;font-weight:900;letter-spacing:-1.5px}
+h1 em{font-style:normal;color:var(--yel)}
+.hero p.lead{font-size:19px;color:#f0d9c2;margin:18px 0 26px;max-width:28em}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.facts{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap}
+.facts div{font-size:14px;color:#d9bfa6}
+.facts b{display:block;font-size:22px;color:#fff;font-weight:800}
+.stack{position:relative;justify-self:center;width:min(420px,90vw);aspect-ratio:1}
+.stack .glow{position:absolute;inset:12%;border-radius:50%;background:radial-gradient(circle,#f7b32b55,transparent 65%)}
+.stack svg{position:relative;width:100%;height:100%}
+.layer{animation:drop .7s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes drop{from{transform:translateY(-260px);opacity:0}}
+.badge{position:absolute;top:8%;left:2%;width:118px;height:118px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;text-align:center;font-weight:900;font-size:15px;line-height:1.1;transform:rotate(-12deg);box-shadow:0 10px 30px #0006;animation:pop .5s 1.6s both}
+.badge big{display:block;font-size:30px}
+@keyframes pop{from{transform:rotate(-12deg) scale(0)}}
+
+/* game band */
+.game{background:var(--yel);position:relative;overflow:hidden}
+.game::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0 22px,#ffffff1c 22px 44px);pointer-events:none}
+.game .wrap{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;padding-top:48px;padding-bottom:48px}
+.phone{width:230px;aspect-ratio:9/18.5;border-radius:34px;background:#1b110b;padding:9px;box-shadow:0 24px 50px #6b3f0055;transform:rotate(-4deg)}
+.phone div{width:100%;height:100%;border-radius:26px;overflow:hidden;background:#7dc8f5}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top}
+.game h2{font-size:clamp(30px,4.4vw,46px);line-height:1.05;margin:0;font-weight:900;letter-spacing:-1px}
+.game p{font-size:18px;margin:12px 0 22px;max-width:32em}
+.steps{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px;padding:0;list-style:none}
+.steps li{background:#fff;border-radius:12px;padding:8px 14px;font-weight:700;font-size:15px;box-shadow:0 3px 0 #d4951a}
+.steps li span{color:var(--red)}
+
+/* menu */
+section.sec{padding:64px 0}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.sh h2{font-size:clamp(30px,4vw,44px);margin:0;font-weight:900;letter-spacing:-1px}
+.sh p{margin:4px 0 0;color:var(--mute)}
+.tabs{display:flex;gap:6px;background:var(--cream);padding:5px;border-radius:14px;border:1px solid var(--line)}
+.tabs button{border:0;background:transparent;padding:9px 16px;border-radius:10px;font-weight:700;color:var(--mute)}
+.tabs button[aria-selected=true]{background:var(--dark);color:#fff}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center;transition:transform .15s,box-shadow .15s}
+.item:hover{transform:translateY(-2px);box-shadow:0 10px 24px #6b3f0014}
+.item .ic{width:76px;height:76px;border-radius:14px;background:var(--cream);display:grid;place-items:center}
+.item .ic svg{width:58px}
+.item h3{margin:0;font-size:18px;font-weight:800}
+.item p{margin:2px 0 8px;color:var(--mute);font-size:14px;line-height:1.35}
+.item .pr{display:flex;align-items:center;justify-content:space-between}
+.item .pr b{font-size:20px;font-weight:900}
+.item .pr b small{font-size:14px;font-weight:700}
+.add{width:38px;height:38px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:22px;font-weight:700;line-height:1;display:grid;place-items:center}
+.tagN{display:inline-block;background:var(--yel);font-size:11px;font-weight:800;padding:1px 7px;border-radius:6px;margin-inline-start:6px;vertical-align:3px}
+
+/* deal */
+.deal{background:var(--red);color:#fff;border-radius:24px;padding:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;margin-top:30px;position:relative;overflow:hidden}
+.deal::before{content:'';position:absolute;left:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:#ffffff14}
+.deal h3{margin:0;font-size:28px;font-weight:900;position:relative}
+.deal p{margin:4px 0 0;color:#ffe1d6;position:relative}
+
+/* info */
+.info{background:var(--dark);color:#fff}
+.info .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--dark2);border-radius:20px;padding:22px;border:1px solid #ffffff12}
+.card h3{margin:0 0 12px;font-size:20px;font-weight:800;color:var(--yel)}
+.hours{width:100%;border-collapse:collapse;font-size:15px}
+.hours td{padding:6px 0;border-bottom:1px solid #ffffff12}
+.hours td:last-child{text-align:left;font-weight:700;font-variant-numeric:tabular-nums}
+.hours tr.today td{color:var(--yel)}
+.card p{margin:0 0 14px;color:#e8d3bd}
+.card .btn{font-size:15px;padding:11px 16px;box-shadow:none}
+
+/* footer */
+.foot{background:#1b110b;color:#b49a85;font-size:14px;padding:26px 0 34px}
+.foot .wrap{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.made{display:flex;align-items:center;gap:10px;background:#ffffff0d;border:1px solid #ffffff1a;padding:10px 14px;border-radius:14px;color:#fff;text-decoration:none;font-weight:700}
+.made span{color:var(--yel)}
+
+/* cart pill + toast */
+.cart{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,150%);z-index:30;display:flex;align-items:center;gap:12px;background:var(--dark);color:#fff;border-radius:99px;padding:8px 8px 8px 18px;box-shadow:0 12px 30px #0005;transition:transform .3s cubic-bezier(.3,1.4,.5,1);white-space:nowrap}
+.cart.on{transform:translate(-50%,0)}
+.cart b{background:var(--yel);color:var(--dark);border-radius:99px;min-width:30px;height:30px;display:grid;place-items:center;font-weight:900}
+.cart .btn{padding:10px 16px;font-size:15px;box-shadow:none}
+.toast{position:fixed;top:74px;left:50%;transform:translate(-50%,-20px);background:#fff;color:var(--ink);padding:12px 18px;border-radius:14px;box-shadow:0 10px 30px #0003;font-weight:700;opacity:0;transition:.25s;z-index:40;max-width:92vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:820px){
+  .nav{display:none}
+  .bar .btn{margin-inline-start:auto}
+  .hero .wrap{grid-template-columns:1fr;padding-top:30px;padding-bottom:40px;gap:6px}
+  .stack{order:-1;width:min(300px,78vw);margin-bottom:-10px}
+  .badge{width:92px;height:92px;font-size:12px}.badge big{font-size:24px}
+  .hero p.lead{font-size:17px;margin:14px 0 22px}
+  .ctas .btn{flex:1}
+  .facts{gap:18px;margin-top:24px}
+  .game .wrap{grid-template-columns:1fr;text-align:center;justify-items:center;gap:26px}
+  .phone{width:190px}
+  .steps{justify-content:center}
+  section.sec{padding:44px 0}
+  .tabs{width:100%}.tabs button{flex:1;padding:9px 6px}
+  .info .grid{grid-template-columns:1fr}
+  .foot .wrap{flex-direction:column;align-items:stretch;text-align:center}
+  .made{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-burger" viewBox="0 0 64 64"><path d="M8 30c0-12 11-20 24-20s24 8 24 20Z" fill="#e8952b"/><g fill="#fff6d6"><ellipse cx="22" cy="20" rx="2" ry="1.2"/><ellipse cx="32" cy="16" rx="2" ry="1.2"/><ellipse cx="42" cy="21" rx="2" ry="1.2"/></g><path d="M6 33h52l-4 5-6-3-6 3-6-3-6 3-6-3-6 3-6-3Z" fill="#5dbb46"/><rect x="7" y="37" width="50" height="9" rx="4.5" fill="#6b3a1e"/><path d="M8 44h48v3l-5 4-6-4-6 4-6-4-6 4-6-4-6 4-7-4Z" fill="#f7c331"/><path d="M9 49h46a3 3 0 0 1 0 2c-2 5-10 7-23 7S11 56 9 51a3 3 0 0 1 0-2Z" fill="#e8952b"/></symbol>
+    <symbol id="i-fries" viewBox="0 0 64 64"><g fill="#f7c331" stroke="#d99a12" stroke-width="1"><rect x="18" y="8" width="6" height="30" rx="2" transform="rotate(-8 21 23)"/><rect x="27" y="5" width="6" height="32" rx="2"/><rect x="36" y="7" width="6" height="30" rx="2" transform="rotate(7 39 22)"/><rect x="23" y="10" width="6" height="28" rx="2" transform="rotate(4 26 24)"/><rect x="32" y="9" width="6" height="28" rx="2" transform="rotate(-5 35 23)"/></g><path d="M14 28h36l-5 30H19Z" fill="#d62828"/><path d="M14 28h36l-1 6H15Z" fill="#b21e1e"/><circle cx="32" cy="44" r="6" fill="#f7b32b"/></symbol>
+    <symbol id="i-shake" viewBox="0 0 64 64"><rect x="38" y="2" width="4" height="22" rx="2" fill="#d62828" transform="rotate(14 40 13)"/><path d="M18 22c0-8 6-13 14-13s14 5 14 13Z" fill="#fff"/><circle cx="32" cy="8" r="4" fill="#d62828"/><path d="M16 22h32l-4 38H20Z" fill="#f4a3b4"/><path d="M16 22h32l-1 6H17Z" fill="#fff"/><path d="M19 34h26l-.6 6H19.6Z" fill="#fff6"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3Z"/></symbol>
+  </defs>
+</svg>
+
+<header class="bar"><div class="wrap">
+  <a class="logo" href="#"><i><svg><use href="#i-burger"/></svg></i>הבורגרייה</a>
+  <nav class="nav"><a href="#menu">תפריט</a><a href="#game">משחק ופרס</a><a href="#info">שעות ומיקום</a></nav>
+  <button class="btn y" data-order>הזמנה</button>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="kicker"><b></b><span id="openNow">פתוח עכשיו · עד 23:00</span></span>
+    <h1>המבורגר על הגריל.<br><em>בלי קיצורי דרך.</em></h1>
+    <p class="lead">קציצה של 220 גרם שנטחנת כל בוקר, לחמנייה שנאפית אצלנו וצ׳יפס חתוך ביד. מזמינים בוואטסאפ, אוספים חם.</p>
+    <div class="ctas">
+      <button class="btn r" data-order><svg><use href="#i-wa"/></svg>להזמנה</button>
+      <a class="btn o" href="#menu">לתפריט</a>
+    </div>
+    <div class="facts"><div><b>15 דק׳</b>זמן הכנה ממוצע</div><div><b>220 גר׳</b>קציצה טרייה</div><div><b>0</b>מוצרים קפואים</div></div>
+  </div>
+  <div class="stack" aria-hidden="true">
+    <div class="glow"></div>
+    <svg viewBox="0 0 400 400">
+      <ellipse cx="200" cy="350" rx="150" ry="16" fill="#00000040"/>
+      <g class="layer" style="animation-delay:1.2s"><path d="M70 316h260a10 10 0 0 1 2 6c-8 22-50 32-132 32S76 344 68 322a10 10 0 0 1 2-6Z" fill="#e8952b"/></g>
+      <g class="layer" style="animation-delay:1s"><path d="M64 300h272v8l-24 16-30-14-30 14-30-14-30 14-30-14-30 14-30-14-28 12Z" fill="#f7c331"/></g>
+      <g class="layer" style="animation-delay:.8s"><rect x="62" y="262" width="276" height="44" rx="22" fill="#6b3a1e"/><path d="M84 272h40M150 276h50M230 270h60" stroke="#4a2410" stroke-width="5" stroke-linecap="round"/></g>
+      <g class="layer" style="animation-delay:.6s"><ellipse cx="135" cy="252" rx="52" ry="14" fill="#e63946"/><ellipse cx="265" cy="252" rx="52" ry="14" fill="#e63946"/><ellipse cx="135" cy="250" rx="34" ry="7" fill="#ff7b84"/><ellipse cx="265" cy="250" rx="34" ry="7" fill="#ff7b84"/></g>
+      <g class="layer" style="animation-delay:.4s"><path d="M56 232h288l-16 22-34-12-34 14-34-14-34 14-34-14-34 14-34-12Z" fill="#5dbb46"/></g>
+      <g class="layer" style="animation-delay:.2s"><path d="M64 226c0-74 62-118 136-118s136 44 136 118Z" fill="#e8952b"/><path d="M90 200c10-48 54-74 110-74" stroke="#ffbf5e" stroke-width="10" stroke-linecap="round" fill="none" opacity=".6"/><g fill="#fff6d6"><ellipse cx="150" cy="160" rx="7" ry="4" transform="rotate(-20 150 160)"/><ellipse cx="200" cy="140" rx="7" ry="4"/><ellipse cx="250" cy="160" rx="7" ry="4" transform="rotate(20 250 160)"/><ellipse cx="175" cy="190" rx="7" ry="4" transform="rotate(10 175 190)"/><ellipse cx="228" cy="192" rx="7" ry="4" transform="rotate(-10 228 192)"/><ellipse cx="120" cy="198" rx="7" ry="4" transform="rotate(-30 120 198)"/><ellipse cx="282" cy="198" rx="7" ry="4" transform="rotate(30 282 198)"/></g></g>
+    </svg>
+    <div class="badge"><div><big>₪49</big>קלאסי<br>עם צ׳יפס</div></div>
+  </div>
+</div></section>
+
+<section class="game" id="game"><div class="wrap">
+  <a class="phone" href="game/" aria-label="למשחק"><div><img src="game-shot.jpg" alt="המשחק מגדל ההמבורגר" loading="lazy"></div></a>
+  <div>
+    <h2>מחכים לאוכל?<br>בונים מגדל וזוכים.</h2>
+    <p>המשחק של הבורגרייה: מפילים מרכיבים מהעגורן ובונים את ההמבורגר הכי גבוה. מגיעים ל־30 קומות ומקבלים קופון לצ׳יפס גדול חינם.</p>
+    <ul class="steps"><li><span>1.</span> סורקים בשולחן</li><li><span>2.</span> בונים מגדל</li><li><span>3.</span> מראים קופון בקופה</li></ul>
+    <a class="btn r" href="game/">לשחק עכשיו</a>
+  </div>
+</div></section>
+
+<section class="sec" id="menu"><div class="wrap">
+  <div class="sh">
+    <div><h2>התפריט</h2><p>כל הבורגרים מגיעים עם חסה, עגבנייה, בצל ורוטב הבית.</p></div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="b">בורגרים</button>
+      <button role="tab" aria-selected="false" data-tab="s">תוספות</button>
+      <button role="tab" aria-selected="false" data-tab="d">שתייה</button>
+    </div>
+  </div>
+  <div class="menu" id="menuGrid"></div>
+  <div class="deal">
+    <div><h3>ארוחת צהריים · ₪59</h3><p>בורגר קלאסי, צ׳יפס ושתייה. א׳–ה׳, 12:00–16:00.</p></div>
+    <button class="btn y" data-order>להזמין את הדיל</button>
+  </div>
+</div></section>
+
+<section class="sec info" id="info"><div class="wrap">
+  <div class="sh"><div><h2>שעות ומיקום</h2><p style="color:#d9bfa6">אפשר לשבת, לאסוף או להזמין משלוח באזור.</p></div></div>
+  <div class="grid">
+    <div class="card"><h3>שעות פתיחה</h3><table class="hours" id="hours"></table></div>
+    <div class="card"><h3>איפה אנחנו</h3><p>רחוב הדוגמה 12, תל אביב<br>חניה בכחול-לבן ברחוב, ובחניון במרחק 2 דקות הליכה.</p><button class="btn y" data-demo="בעסק אמיתי הכפתור הזה פותח ניווט ב-Waze או במפות Google.">ניווט ב-Waze</button></div>
+    <div class="card"><h3>הזמנות ואירועים</h3><p>ימי הולדת, צוותים מהעבודה ומגשי אירוח. כתבו לנו ונחזור אליכם עוד היום.</p><button class="btn r" data-order><svg><use href="#i-wa"/></svg>כתבו לנו</button></div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <span>הבורגרייה היא עסק דמיוני. זה אתר לדוגמה.</span>
+  <a class="made" id="made" href="#" target="_blank" rel="noopener">רוצים אתר כזה לעסק שלכם? <span>דברו איתי ←</span></a>
+</div></footer>
+
+<div class="cart" id="cart"><b id="cartN">0</b><span id="cartT">₪0</span><button class="btn r" data-order>שליחת הזמנה</button></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ---- settings: the site owner's WhatsApp (gets the "I want a site like this" message) ----
+const MAKER_WA = '972584494126';
+const MENU = {
+  b: [['קלאסי', 'קציצה 220 גר׳, חסה, עגבנייה, בצל ורוטב הבית', 49, 'i-burger'], ['כפול צ׳יז', 'שתי קציצות, צ׳דר כפול ובצל מקורמל', 64, 'i-burger', 'מנה של השף'], ['בייקון BBQ', 'בייקון עגל, טבעות בצל ורוטב ברביקיו מעושן', 58, 'i-burger'], ['ילדים', 'קציצה 120 גר׳ עם קטשופ, מגיע עם צ׳יפס', 39, 'i-burger']],
+  s: [['צ׳יפס ביתי', 'חתוך ביד, מלח ים', 18, 'i-fries'], ['צ׳יפס בטטה', 'עם איולי שום', 22, 'i-fries'], ['טבעות בצל', '8 טבעות בבלילת בירה', 21, 'i-fries', 'חדש']],
+  d: [['שייק וניל', 'גלידה אמיתית וחלב', 22, 'i-shake'], ['שייק תות', 'עם תותים טריים', 24, 'i-shake'], ['לימונדה', 'נענע ולימון סחוט', 14, 'i-shake']]
+};
+const $ = id => document.getElementById(id);
+let cart = [];
+function renderMenu(k) {
+  $('menuGrid').innerHTML = MENU[k].map((m, i) => `<div class="item"><div class="ic"><svg><use href="#${m[3]}"/></svg></div>
+    <div><h3>${m[0]}${m[4] ? `<span class="tagN">${m[4]}</span>` : ''}</h3><p>${m[1]}</p>
+    <div class="pr"><b><small>₪</small>${m[2]}</b><button class="add" data-add="${k}${i}" aria-label="הוספה: ${m[0]}">+</button></div></div></div>`).join('');
+}
+document.querySelector('.tabs').onclick = e => { const b = e.target.closest('[data-tab]'); if (!b) return; document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-selected', x === b)); renderMenu(b.dataset.tab); };
+$('menuGrid').onclick = e => { const b = e.target.closest('[data-add]'); if (!b) return; const m = MENU[b.dataset.add[0]][+b.dataset.add.slice(1)]; cart.push(m); updCart(); toast(`${m[0]} נוסף להזמנה`); };
+function updCart() { $('cartN').textContent = cart.length; $('cartT').textContent = '₪' + cart.reduce((s, m) => s + m[2], 0); $('cart').classList.toggle('on', cart.length > 0); }
+let tt; function toast(m) { const t = $('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 2200); }
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-order]')) toast(cart.length ? `באתר אמיתי ההזמנה (${cart.length} פריטים) נשלחת ישר לוואטסאפ של העסק.` : 'באתר אמיתי הכפתור הזה פותח וואטסאפ עם העסק.');
+  const d = e.target.closest('[data-demo]'); if (d) toast(d.dataset.demo);
+});
+// hours with today highlighted
+const H = [['ראשון', '12:00–23:00'], ['שני', '12:00–23:00'], ['שלישי', '12:00–23:00'], ['רביעי', '12:00–23:00'], ['חמישי', '12:00–00:00'], ['שישי', '11:00–16:00'], ['מוצאי שבת', '19:00–00:00']];
+const today = new Date().getDay();
+$('hours').innerHTML = H.map((h, i) => `<tr class="${i === today ? 'today' : ''}"><td>${h[0]}${i === today ? ' · היום' : ''}</td><td dir="ltr">${h[1]}</td></tr>`).join('');
+const hr = new Date().getHours();
+const open = today === 6 ? hr >= 19 : today === 5 ? hr >= 11 && hr < 16 : hr >= 12 && hr < 23 + (today === 4);
+if (!open) { $('openNow').textContent = today === 6 || (today === 5 && hr >= 16) ? 'סגור עכשיו · נפתח במוצאי שבת' : 'סגור עכשיו · נפתח ב-12:00'; document.querySelector('.kicker b').style.background = '#f7b32b'; }
+$('made').href = `https://wa.me/${MAKER_WA}?text=${encodeURIComponent('היי, ראיתי את האתר לדוגמה של הבורגרייה ואני רוצה אתר / משחק לעסק שלי')}`;
+renderMenu('b');
+</script>
+</body>
+</html>
